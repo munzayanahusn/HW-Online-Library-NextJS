@@ -24,7 +24,7 @@ const Navbar = ({ navigateTo }) => {
   const handleLogout = () => {
     window.localStorage.setItem("isLogIn", false);
     setIsLogin(false);
-    router.push("/Homepage"); // Redirect to homepage
+    router.push("/");
     window.location.reload(); 
   };
 
@@ -37,7 +37,7 @@ const Navbar = ({ navigateTo }) => {
       setIsLogin(true);
       handleClose();
 
-      router.push("/Homepage", undefined, { shallow: true });
+      router.push("/", undefined, { shallow: true });
       window.location.reload();
     } catch (err) {
       alert(err.message);

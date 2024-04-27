@@ -33,8 +33,8 @@ export default function BookDetail() {
   const confirmDelete = async () => {
     try {
       await deleteBook(id);
-      router.push("/Homepage");
-      setBook(null); // Remove book detail from state after deletion
+      router.push("/");
+      setBook(null);
     } catch (error) {
       console.error("Error deleting book:", error);
     }
@@ -77,6 +77,11 @@ export default function BookDetail() {
           <p>Book not found.</p>
         </div>
       )}
+      {(!localStorage.getItem('token') || (localStorage.getItem('isLogIn') == "false")) && (
+        <div className="text-center text-amber-700 mt-10">
+          <p>You need to log in to edit or delete the book.</p>
+        </div>
+      )}
       {typeof window !== 'undefined' && localStorage.getItem('token') && (localStorage.getItem('isLogIn') === "true") && (
         <div className="flex space-x-4 mt-4">
           <div className="relative">
@@ -102,4 +107,20 @@ export default function BookDetail() {
     </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  console.log("MASUK SERVER PROPS");
+  const { id } = context.params;
+  try {
+    const book = await getBookDetailById(id);
+    return {
+      props: { book }
+    };
+  } catch (error) {
+    console.error("Error fetching book:", error);
+    return {
+      props: { book: null }
+    };
+  }
 }
