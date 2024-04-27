@@ -92,7 +92,7 @@ export default function BookDetails() {
               </div>
             )}
           </div>
-          <Link href={`/EditBookPage/${id}`} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+          <Link href={`/EditBook/${id}`} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
             Edit
           </Link>
         </div>
