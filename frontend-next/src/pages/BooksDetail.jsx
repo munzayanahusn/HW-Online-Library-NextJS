@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { deleteBook, getBookDetailById } from "../../modules/fetch";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { deleteBook, getBookDetailById } from "../modules/fetch";
 
 export default function BookDetails() {
   const [book, setBook] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
-    const fetchBook = async () => {
-      try {
-        const response = await getBookDetailById(id);
-        console.log("GET A BOOK", response);
-        setBook(response);
-        setLoading(false);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetchBook();
+    if (id) {
+      const fetchBook = async () => {
+        try {
+          const response = await getBookDetailById(id);
+          console.log("GET A BOOK", response);
+          setBook(response);
+          setLoading(false);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      fetchBook();
+    }
   }, [id]);
 
   console.log("GET A BOOK", book);
@@ -32,7 +35,7 @@ export default function BookDetails() {
   const confirmDelete = async () => {
     try {
       await deleteBook(id);
-      navigate("/");
+      router.push("/Homepage");
     } catch (e) {
       console.log(e);
     }
@@ -89,8 +92,8 @@ export default function BookDetails() {
               </div>
             )}
           </div>
-          <Link to={`/editbook/${id}`}>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Edit</button>
+          <Link href={`/EditBookPage/${id}`} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+            Edit
           </Link>
         </div>
       )}

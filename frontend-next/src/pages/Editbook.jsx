@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import BookForm from "../../components/BookForm";
-import { getBookDetailById } from "../../modules/fetch";
+import { useRouter } from "next/router";
+import BookForm from "../components/BookForm";
+import { getBookDetailById } from "../modules/fetch";
 
 export default function EditBookPage() {
-  const { id } = useParams();
+  const router = useRouter();
+  const { id } = router.query;
   const [book, setBook] = useState(null);
 
   useEffect(() => {
@@ -16,12 +17,14 @@ export default function EditBookPage() {
         console.log(e);
       }
     };
-    fetchBook();
+    if (id) {
+      fetchBook();
+    }
   }, [id]);
 
   return (
     <div>
-      <BookForm bookData={book} />
+      {book && <BookForm bookData={book} />}
     </div>
   );
 }

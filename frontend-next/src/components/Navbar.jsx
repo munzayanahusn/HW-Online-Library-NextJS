@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import { loginUser } from "../modules/fetch";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     const loginBool = window.localStorage.getItem("isLogIn");
@@ -23,7 +24,7 @@ const Navbar = () => {
   const handleLogout = () => {
     window.localStorage.setItem("isLogIn", false);
     setIsLogin(false);
-    
+    router.push("/Homepage"); // Redirect to homepage
     window.location.reload(); 
   };
 
@@ -36,25 +37,23 @@ const Navbar = () => {
       setIsLogin(true);
       handleClose();
 
-      navigate("/", { replace: true });
+      router.push("/Homepage", undefined, { shallow: true });
       window.location.reload();
     } catch (err) {
       alert(err.message);
     }
   };
 
-  console.log("isLogin", isLogin);
-
   return (
     <nav className="flex justify-between items-center bg-slate-800 text-black p-4">
-      <Link to="/" className="cursor-pointer flex">
+      <Link href="/Homepage">
         <img src="/online-lib.svg" alt="Online Library" className="h-8 mr-5" />
         <h1 className="text-xl font-bold">Online Library</h1>
       </Link>
       <div className="flex space-x-4">
         {isLogin && (
-          <Link to="/newbook">
-            <button className="bg-gray-800 text-white py-2 px-4 rounded">Create New Book</button>
+          <Link href="/NewBookPage" className="bg-gray-800 text-white py-2 px-4 rounded">
+            Create New Book
           </Link>
         )}
         {!isLogin ? (
@@ -100,7 +99,9 @@ const Navbar = () => {
               </div>
               <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Login</button>
             </form>
-            <Link to="/register" onClick={handleClose} className="text-blue-500 hover:underline">Doesn't Have an Account? Click here</Link>
+            <Link href="/Register" onClick={handleClose} className="text-blue-500 hover:underline">
+              Doesn't Have an Account? Click here
+            </Link>
           </div>
         </div>
       )}
