@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { registerUser } from "../modules/fetch";
 import Navbar from "../components/Navbar"; 
+import styles from "./styles/App.css"; 
+
 
 const Register = () => {
   const router = useRouter();
@@ -31,7 +33,7 @@ const Register = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
     <Navbar />
     <div className="w-full py-4 px-24 mx-auto mt-8" style={{ maxWidth: '2000px' }}>
       <h1 className="text-3xl text-gray-900 font-bold mb-4">Account Registration</h1>
@@ -108,7 +110,7 @@ const Register = () => {
         </form>
       </div>
     </div>
-    </>
+    </div>
   );
 };
 

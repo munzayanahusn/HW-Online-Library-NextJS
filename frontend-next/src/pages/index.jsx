@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import "./styles/index.css";
+import styles from "./styles/index.css"; 
 
 const IndexPage = () => {
-  return <App />;
+  return (
+    <div className={styles.container}>
+      <App />;
+    </div>
+  )
 };
 
 export default IndexPage;

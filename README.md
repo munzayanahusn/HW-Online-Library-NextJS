@@ -4,7 +4,7 @@ Kontributor : Husnia Munzayana
 ## Penjelasan Ringkas Program
 Repository ini beeisi implementasi dari sebuah situs web _online library_ yang memungkinkan pengguna untuk menjelajahi daftar buku serta melihat detail buku. Pengguna juga dapat melakukan operasi registrasi, login, dan logout. Selain itu, pengguna yang sudah masuk ke akun mereka memiliki akses tambahan, yaitu kemampuan untuk menambahkan, mengedit, dan menghapus buku.
 
-Sisi frontend website ini diimplementasikan dalam folder `./frontend/` dan sisi backend pada folder `/backend/`. Untuk pengembangan backend, teknologi yang digunakan adalah NodeJS, Express.js, Prisma, dan database PostgreSQL. Sementara itu, pada sisi frontend, proyek ini mengandalkan React bersama dengan Vite sebagai pembangun yang responsif, dan Tailwind CSS untuk manajemen tata letak dan desain.
+Sisi frontend website ini diimplementasikan dalam folder `./frontend/` dan sisi backend pada folder `/backend/`. Untuk pengembangan backend, teknologi yang digunakan adalah NodeJS, Express.js, Prisma, dan database PostgreSQL. Sementara itu, pada sisi frontend, proyek ini NextJS dan Tailwind CSS untuk manajemen tata letak dan desain.
 
 Fitur utama dari situs web ini meliputi:
 - Autentikasi Pengguna: Sistem autentikasi memungkinkan pengguna untuk _login_ ke akun mereka atau _register_ untuk membuat akun baru.
@@ -21,10 +21,11 @@ Fitur utama dari situs web ini meliputi:
 - Vite
 - Tailwind CSS
 - Multer
+- NextJS
 
 ## Cara Menjalankan Program
 ### Back End
-1. Clone repository ini : `https://github.com/munzayanahusn/HW10-File-DesignPattern.git`
+1. Clone repository ini : `https://github.com/munzayanahusn/HW-Online-Library-NextJS.git`
 2. Buka terminal dan arahkan ke directory tempat clone
 3. Arahkan ke folder backend : `cd backend`
 4. Setup database masing-masing
@@ -42,7 +43,7 @@ Fitur utama dari situs web ini meliputi:
 > Ubah username, password, dan database_name pada `.env` sesuai setup database yang telah dibuat. Anda juga dapat mengubah mysecretkey menjadi JWT_SECRET yang Anda inginkan
 
 ### Front End
-1. Clone repository ini : `https://github.com/munzayanahusn/HW10-File-DesignPattern.git`
+1. Clone repository ini : `https://github.com/munzayanahusn/HW-Online-Library-NextJS.git`
 2. Buka terminal dan arahkan ke directory tempat clone
 3. Arahkan ke folder frontend : `cd frontend`
 4. Install dependencies dengan perintah : `npm install`
@@ -56,3 +57,28 @@ Fitur utama dari situs web ini meliputi:
     ```
     yang menandakan frontend website sudah berjalan.
 7. Buka website malalui `http://localhost:5173/`
+
+## Tampilan Halaman Website
+### Halaman Beranda
+![Screenshot HomePage Online Library Website](./docs/screenshot-homepage.png)
+
+### Halaman Detail Buku [Saat User Sudah Login]
+![Screenshot Book's Detail Online Library Website](./docs/screenshot-bookdetail-login.png)
+
+### Halaman Detail Buku [Saat User Belum Login]
+![Screenshot Book's Detail Online Library Website](./docs/screenshot-bookdetail.png)
+
+### Halaman Menambahkan Buku
+![Screenshot Create Book Online Library Website](./docs/screenshot-create.png)
+
+### Halaman Mengedit Buku
+![Screenshot Edit Book Online Library Website](./docs/screenshot-edit.png)
+
+### Halaman Menghapus Buku
+![Screenshot Delete Book Online Library Website](./docs/screenshot-delete.png)
+
+### Halaman Pendaftaran/Register
+![Screenshot Register Online Library Website](./docs/screenshot-register.png)
+
+### Tampilan Login
+![Screenshot Login Online Library Website](./docs/screenshot-login.png)

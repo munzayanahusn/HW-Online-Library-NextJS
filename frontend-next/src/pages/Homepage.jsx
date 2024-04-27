@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Books from "../components/Books";
 import { getAllBooks } from "../modules/fetch";
+import styles from "./styles/App.css"; 
 
 export default function Homepage() {
   const [books, setBooks] = useState([]);
@@ -26,6 +27,7 @@ export default function Homepage() {
   }, []);
 
   return (
+    <div className={styles.container}>
     <div className="flex flex-col items-center w-full" style={{ fontFamily: 'Inter, sans-serif' }}>
       <div className="text-md text-center text-slate-700 font-bold mt-10 mb-5">
         <h1>Welcome to the Online Library</h1>
@@ -53,6 +55,7 @@ export default function Homepage() {
           <Books key={`${book.id} ${book.title}`} {...book} />
         ))}
       </div>
+    </div>
     </div>
   );
 }

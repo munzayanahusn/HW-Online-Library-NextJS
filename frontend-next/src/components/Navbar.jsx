@@ -22,23 +22,23 @@ const Navbar = ({ navigateTo }) => {
   const handleClose = () => setIsOpen(false);
 
   const handleLogout = () => {
+    router.push("/", undefined, { shallow: true });
     window.localStorage.setItem("isLogIn", false);
     setIsLogin(false);
-    router.push("/");
-    window.location.reload(); 
+    router.reload(); 
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      router.push("/", undefined, { shallow: true });
       const token = await loginUser(e.target.email.value, e.target.password.value);
       window.localStorage.setItem("token", token.token);
       window.localStorage.setItem("isLogIn", true);
       setIsLogin(true);
       handleClose();
 
-      router.push("/", undefined, { shallow: true });
-      window.location.reload();
+      router.reload();
     } catch (err) {
       alert(err.message);
     }

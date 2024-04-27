@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import BookForm from "../../components/BookForm";
 import { getBookDetailById } from "../../modules/fetch";
 import Navbar from "../../components/Navbar"; 
+import styles from "../styles/App.css"; 
 
 export default function EditBook() {
   const router = useRouter();
@@ -24,11 +25,11 @@ export default function EditBook() {
   }, [id]);
 
   return (
-    <>
+    <div className={styles.container}>
     <Navbar />
     <div>
       {book && <BookForm bookData={book} />}
     </div>    
-    </>
+    </div>
   );
 }

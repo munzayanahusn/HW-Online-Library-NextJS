@@ -19,10 +19,6 @@ export default function App() {
     <div className={styles.container}>
       <Navbar navigateTo={navigateTo} />
       {router.pathname === "/" && <Homepage />}
-      {router.pathname === "/Register" && <Register />}
-      {router.pathname === "/NewBooks" && <NewBookPage />}
-      {router.pathname.startsWith("/BookDetail/") && <BookDetail />}
-      {router.pathname.startsWith("/EditBook/") && <EditBook />}
     </div>
   );
 }
