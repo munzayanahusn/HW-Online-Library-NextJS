@@ -14,7 +14,7 @@ Fitur utama dari situs web ini meliputi:
 
 ## Pre-Requisite
 - Node.js
-- npm atau Yarn
+- npm atau yarn
 - Express.js
 - Prisma
 - React
@@ -50,13 +50,18 @@ Fitur utama dari situs web ini meliputi:
 5. Jalankan backend dengan perintah : `npm run dev`
 6. Akan muncul
     ```
-    VITE v4.5.3  ready in 347 ms
-      ➜  Local:   http://localhost:5173/
-      ➜  Network: use --host to expose
-      ➜  press h to show help
+    > frontend-next@0.1.0 dev
+    > next dev
+
+      ▲ Next.js 14.2.3
+      - Local:        http://localhost:3000
+
+      ✓ Starting...
+      ✓ Ready in 1790ms
+
     ```
     yang menandakan frontend website sudah berjalan.
-7. Buka website malalui `http://localhost:5173/`
+7. Buka website malalui `http://localhost:3000/`
 
 ## Tampilan Halaman Website
 ### Halaman Beranda
