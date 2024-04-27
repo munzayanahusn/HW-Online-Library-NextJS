@@ -18,11 +18,11 @@ export default function App() {
   return (
     <div className={styles.container}>
       <Navbar />
-      {router.pathname === "/homepage" && <Homepage />}
-      {router.pathname === "/register" && <Register />}
-      {router.pathname === "/newbook" && <NewBookPage />}
-      {router.pathname.startsWith("/books/") && <BookDetails />}
-      {router.pathname.startsWith("/editbook/") && <EditBookPage />}
+      {router.pathname === "/Homepage" && <Homepage />}
+      {router.pathname === "/Register" && <Register />}
+      {router.pathname === "/NewBooks" && <NewBookPage />}
+      {router.pathname.startsWith("/BooksDetail/") && <BookDetails />}
+      {router.pathname.startsWith("/Editbook/") && <EditBookPage />}
     </div>
   );
 }
