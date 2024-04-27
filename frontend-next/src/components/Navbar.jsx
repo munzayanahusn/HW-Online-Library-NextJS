@@ -52,7 +52,7 @@ const Navbar = () => {
       </Link>
       <div className="flex space-x-4">
         {isLogin && (
-          <Link href="/NewBookPage" className="bg-gray-800 text-white py-2 px-4 rounded">
+          <Link href="/NewBooks" className="bg-gray-800 text-white py-2 px-4 rounded">
             Create New Book
           </Link>
         )}

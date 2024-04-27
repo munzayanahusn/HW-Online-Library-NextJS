@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
 import BookDetails from "./BooksDetail";
-import EditBookPage from "./Editbook";
+import EditBookPage from "./EditBook";
 import Homepage from "./Homepage";
 import NewBookPage from "./NewBooks";
 import Register from "./Register";
@@ -18,11 +18,11 @@ export default function App() {
   return (
     <div className={styles.container}>
       <Navbar />
-      {router.pathname === "/Homepage" && <Homepage />}
-      {router.pathname === "/Register" && <Register />}
-      {router.pathname === "/NewBooks" && <NewBookPage />}
-      {router.pathname.startsWith("/BooksDetail/") && <BookDetails />}
-      {router.pathname.startsWith("/Editbook/") && <EditBookPage />}
+      {router.pathname === "/" && <Homepage />}
+      {router.pathname === "/register" && <Register />}
+      {router.pathname === "/newbooks" && <NewBookPage />}
+      {router.pathname.startsWith("/books/") && <BookDetails />}
+      {router.pathname.startsWith("/editbooks/") && <EditBookPage />}
     </div>
   );
 }

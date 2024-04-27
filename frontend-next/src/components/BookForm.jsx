@@ -21,7 +21,7 @@ export default function BookForm({ bookData }) {
           parseInt(formData.get("year")),
           parseInt(formData.get("pages"))
         );
-        router.navigateT(`/books/${bookData.id}`);
+        router.push(`/BooksDetail/${bookData.id}`);
         alert("Book updated successfully");
       } catch (error) {
         alert(error.response.data.message || "Something went wrong");
@@ -30,7 +30,7 @@ export default function BookForm({ bookData }) {
       try {
         await createBook(formData);
         event.target.reset();
-        router.push(`/Homepage`);
+        router.push(`/homepage`);
         alert("Book created successfully");
         setSelectedImage("");
       } catch (error) {
@@ -48,9 +48,9 @@ export default function BookForm({ bookData }) {
 
   const handleCancel = () => {
     if (bookData) {
-      router.push(`/BookDetails/${bookData.id}`);
+      router.push(`/BooksDetail/${bookData.id}`);
     } else {
-      router.push(`/Homepage`);
+      router.push(`/`);
     }
   };
 
