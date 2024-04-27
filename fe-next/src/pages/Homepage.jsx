@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Books from "../components/Books";
-import { getAllBooks } from "../modules/fetch";
+import { getAllBooks } from "../../modules/fetch";
 
 export default function Homepage() {
   const [books, setBooks] = useState([]);

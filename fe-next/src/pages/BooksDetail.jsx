@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deleteBook, getBookDetailById } from "../modules/fetch";
+import { deleteBook, getBookDetailById } from "../../modules/fetch";
 
 export default function BookDetails() {
   const [book, setBook] = useState(null);

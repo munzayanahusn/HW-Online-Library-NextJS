@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../modules/fetch";
+import { registerUser } from "../../modules/fetch";
 
 const Register = () => {
   const [name, setName] = useState("");

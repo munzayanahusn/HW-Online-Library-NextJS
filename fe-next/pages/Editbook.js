@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import BookForm from "../components/BookForm";
-import { getBookDetailById } from "../modules/fetch";
+import BookForm from "../../components/BookForm";
+import { getBookDetailById } from "../../modules/fetch";
 
 export default function EditBookPage() {
   const { id } = useParams();
