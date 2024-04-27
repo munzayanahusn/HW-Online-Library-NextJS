@@ -11,8 +11,8 @@ export default function BookDetails() {
   const { id } = router.query;
 
   useEffect(() => {
-    if (id) {
-      const fetchBook = async () => {
+    const fetchBook = async () => {
+      if (id) {
         try {
           const response = await getBookDetailById(id);
           console.log("GET A BOOK", response);
@@ -21,12 +21,10 @@ export default function BookDetails() {
         } catch (e) {
           console.log(e);
         }
-      };
-      fetchBook();
-    }
+      }
+    };
+    fetchBook();
   }, [id]);
-
-  console.log("GET A BOOK", book);
 
   const handleDeleteBook = async () => {
     setShowConfirmation(true);
@@ -47,9 +45,10 @@ export default function BookDetails() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {isLoading ? (
+      {isLoading && !book && (
         <div className="bg-gray-200 h-72 my-6 animate-pulse"></div>
-      ) : (
+      )}
+      {!isLoading && book && (
         <div className="my-6 flex flex-col items-center">
           <div className="mt-5">
             <h1 className="text-4xl font-bold text-slate-500 mb-10">Book's Detail</h1>
@@ -68,6 +67,11 @@ export default function BookDetails() {
             <p className="text-xl font-semibold text-gray-500">Year : {book.year}</p>
             <p className="text-xl font-semibold text-gray-500 mb-4">Number of Pages : {book.pages} pages</p>
           </div>
+        </div>
+      )}
+      {!isLoading && !book && (
+        <div className="text-center text-red-500 mt-10">
+          <p>Book not found.</p>
         </div>
       )}
       {(!localStorage.getItem('token') || (localStorage.getItem('isLogIn') == "false")) && (
@@ -92,7 +96,7 @@ export default function BookDetails() {
               </div>
             )}
           </div>
-          <Link href={`/EditBook/${id}`} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+          <Link href={`/EditBookPage/${id}`} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
             Edit
           </Link>
         </div>

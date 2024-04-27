@@ -24,7 +24,7 @@ export default function BookForm({ bookData }) {
         router.push(`/BooksDetail/${bookData.id}`);
         alert("Book updated successfully");
       } catch (error) {
-        alert(error.response.data.message || "Something went wrong");
+        alert(error || "Something went wrong");
       }
     } else {
       try {
@@ -34,7 +34,7 @@ export default function BookForm({ bookData }) {
         alert("Book created successfully");
         setSelectedImage("");
       } catch (error) {
-        alert(error.response.data.message || "Something went wrong");
+        alert(error || "Something went wrong");
       }
     }
     setSubmitting(false);
@@ -60,7 +60,115 @@ export default function BookForm({ bookData }) {
 
       <div className="border-2 border-gray-200 rounded-lg p-4">
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Form elements */}
+          <div className="flex mb-4 items-center">
+            <label className="block text-slate-700 text-left mr-4" style={{ width: '150px' }}>
+              Title
+            </label>
+            <p className="text-slate-700 mr-2">:</p>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Enter book title"
+                required={submitting} 
+                defaultValue={bookData?.title}
+                className="bg-white border border-gray-300 rounded p-2 w-full"
+                style={{ color: 'black' }}
+            />
+          </div>
+          <div className="flex mb-4 items-center">
+            <label className="block text-slate-700 text-left mr-4" style={{ width: '150px' }}>
+              Author
+            </label>
+            <p className="text-slate-700 mr-2">:</p>
+            <input
+                type="text"
+                id="author"
+                name="author"
+                placeholder="Enter book author"
+                required={submitting} 
+                defaultValue={bookData?.author}
+                className="bg-white border border-gray-300 rounded p-2 w-full"
+                style={{ color: 'black' }}
+            />
+          </div>
+          <div className="flex mb-4 items-center">
+            <label className="block text-slate-700 text-left mr-4" style={{ width: '150px' }}>
+              Publisher
+            </label>
+            <p className="text-slate-700 mr-2">:</p>
+            <input
+                type="text"
+                id="publisher"
+                name="publisher"
+                placeholder="Enter book publisher"
+                required={submitting} 
+                defaultValue={bookData?.publisher}
+                className="bg-white border border-gray-300 rounded p-2 w-full"
+                style={{ color: 'black' }}
+            />
+          </div>
+          <div className="flex mb-4 items-center">
+            <label className="block text-slate-700 text-left mr-4" style={{ width: '150px' }}>
+              Year
+            </label>
+            <p className="text-slate-700 mr-2">:</p>
+            <input
+                type="number"
+                id="year"
+                name="year"
+                placeholder="Enter book year publication"
+                required={submitting} 
+                defaultValue={bookData?.year}
+                className="bg-white border border-gray-300 rounded p-2 w-full"
+                style={{ color: 'black' }}
+            />
+          </div>
+          <div className="flex mb-4 items-center">
+            <label className="block text-slate-700 text-left mr-4" style={{ width: '150px' }}>
+              Number of Pages
+            </label>
+            <p className="text-slate-700 mr-2">:</p>
+            <input
+                type="number"
+                id="pages"
+                name="pages"
+                placeholder="Enter book number of pages"
+                required={submitting} 
+                defaultValue={bookData?.pages}
+                className="bg-white border border-gray-300 rounded p-2 w-full"
+                style={{ color: 'black' }}
+            />
+          </div>
+          {!bookData?.image && (
+            <div className="flex mb-4 items-center">
+              <label className="block text-slate-700 text-left mr-4" style={{ width: '130px' }}>
+                Image
+              </label>
+              <p className="text-slate-700 mr-2">:</p>
+              <input
+                name="image"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  setSelectedImage(URL.createObjectURL(file));
+                }}
+                className="border border-gray-300 p-2 rounded"
+              />
+            </div>
+          )}
+          {selectedImage && (
+            <img
+              src={selectedImage}
+              alt="Selected Image"
+              className="w-64 border border-black object-cover rounded ml-40"
+            />
+          )}
+          <div className="flex justify-center">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mr-5 rounded" type="submit">{bookData ? "Edit Book" : "Create Book"}</button>
+            <button className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded" onClick={handleCancel}>Cancel</button>
+          </div>
         </form>
       </div>
     </div>

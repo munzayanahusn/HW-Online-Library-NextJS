@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Books({ id, title, author, image, publisher, year }) {
   return (
-    <Link href={`/BookDetails/${id}`}>
+    <Link href="/BookDetails/[id]" as={`/BookDetails/${id}`}>
         <div className="flex items-center space-x-4">
           <img
             src={`http://localhost:8000/${image}`}

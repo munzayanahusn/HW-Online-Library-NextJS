@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center bg-slate-800 text-black p-4">
-      <Link href="/Homepage">
+      <Link href="/" className="cursor-pointer flex">
         <img src="/online-lib.svg" alt="Online Library" className="h-8 mr-5" />
         <h1 className="text-xl font-bold">Online Library</h1>
       </Link>
