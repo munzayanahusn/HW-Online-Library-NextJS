@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import BookForm from "../components/BookForm";
-import { getBookDetailById } from "../modules/fetch";
+import BookForm from "../../components/BookForm";
+import { getBookDetailById } from "../../modules/fetch";
+import Navbar from "../../components/Navbar"; 
 
-export default function EditBookPage() {
+export default function EditBook() {
   const router = useRouter();
   const { id } = router.query;
   const [book, setBook] = useState(null);
@@ -23,8 +24,11 @@ export default function EditBookPage() {
   }, [id]);
 
   return (
+    <>
+    <Navbar />
     <div>
       {book && <BookForm bookData={book} />}
-    </div>
+    </div>    
+    </>
   );
 }

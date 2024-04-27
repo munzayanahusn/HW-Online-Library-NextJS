@@ -4,8 +4,8 @@ import Navbar from "../components/Navbar";
 import Homepage from "./Homepage";
 import NewBookPage from "./NewBooks";
 import Register from "./Register";
-import BookDetails from "./BooksDetail";
-import EditBookPage from "./EditBook";
+import BookDetail from "./BookDetail/[id]";
+import EditBook from "./EditBook/[id]";
 import styles from "./styles/App.css"; 
 
 export default function App() {
@@ -19,10 +19,10 @@ export default function App() {
     <div className={styles.container}>
       <Navbar navigateTo={navigateTo} />
       {router.pathname === "/" && <Homepage />}
-      {router.pathname === "/register" && <Register />}
+      {router.pathname === "/Register" && <Register />}
       {router.pathname === "/NewBooks" && <NewBookPage />}
-      {router.pathname.startsWith("/books/") && <BookDetails />}
-      {router.pathname.startsWith("/editbooks/") && <EditBookPage />}
+      {router.pathname.startsWith("/BookDetail/") && <BookDetail />}
+      {router.pathname.startsWith("/EditBook/") && <EditBook />}
     </div>
   );
 }

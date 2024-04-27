@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { registerUser } from "../modules/fetch";
+import Navbar from "../components/Navbar"; 
 
 const Register = () => {
   const router = useRouter();
@@ -26,10 +27,12 @@ const Register = () => {
   };
 
   const handleCancel = () => {
-    router.push("/Homepage");
+    router.push("/");
   };
 
   return (
+    <>
+    <Navbar />
     <div className="w-full py-4 px-24 mx-auto mt-8" style={{ maxWidth: '2000px' }}>
       <h1 className="text-3xl text-gray-900 font-bold mb-4">Account Registration</h1>
 
@@ -105,6 +108,7 @@ const Register = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

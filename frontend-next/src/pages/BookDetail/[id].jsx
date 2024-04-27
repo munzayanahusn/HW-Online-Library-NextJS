@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { deleteBook, getBookDetailById } from "../modules/fetch";
+import { deleteBook, getBookDetailById } from "../../modules/fetch";
+import Navbar from "../../components/Navbar"; 
 
-export default function BookDetails() {
+export default function BookDetail() {
   const [book, setBook] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -15,11 +16,10 @@ export default function BookDetails() {
       if (id) {
         try {
           const response = await getBookDetailById(id);
-          console.log("GET A BOOK", response);
           setBook(response);
           setLoading(false);
-        } catch (e) {
-          console.log(e);
+        } catch (error) {
+          console.error("Error fetching book:", error);
         }
       }
     };
@@ -34,21 +34,24 @@ export default function BookDetails() {
     try {
       await deleteBook(id);
       router.push("/Homepage");
-    } catch (e) {
-      console.log(e);
+      setBook(null); // Remove book detail from state after deletion
+    } catch (error) {
+      console.error("Error deleting book:", error);
     }
   };
 
   const cancelDelete = () => {
-    setShowConfirmation(false); 
+    setShowConfirmation(false);
   };
 
   return (
+    <>
+    <Navbar />
     <div className="flex flex-col items-center justify-center">
-      {isLoading && !book && (
+      {isLoading && (
         <div className="bg-gray-200 h-72 my-6 animate-pulse"></div>
       )}
-      {!isLoading && book && (
+      {book && (
         <div className="my-6 flex flex-col items-center">
           <div className="mt-5">
             <h1 className="text-4xl font-bold text-slate-500 mb-10">Book's Detail</h1>
@@ -74,12 +77,7 @@ export default function BookDetails() {
           <p>Book not found.</p>
         </div>
       )}
-      {(!localStorage.getItem('token') || (localStorage.getItem('isLogIn') == "false")) && (
-        <div className="text-center text-amber-700 mt-10">
-          <p>You need to log in to edit or delete the book.</p>
-        </div>
-      )}
-      {localStorage.getItem('token') && (localStorage.getItem('isLogIn') == "true") && (
+      {typeof window !== 'undefined' && localStorage.getItem('token') && (localStorage.getItem('isLogIn') === "true") && (
         <div className="flex space-x-4 mt-4">
           <div className="relative">
             <button className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded" onClick={handleDeleteBook}>Delete</button>
@@ -96,11 +94,12 @@ export default function BookDetails() {
               </div>
             )}
           </div>
-          <Link href={`/EditBookPage/${id}`} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-            Edit
+          <Link href={`/EditBook/${id}`} passHref>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Edit</button>
           </Link>
         </div>
       )}
     </div>
+    </>
   );
 }

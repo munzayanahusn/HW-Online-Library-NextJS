@@ -21,7 +21,7 @@ export default function BookForm({ bookData }) {
           parseInt(formData.get("year")),
           parseInt(formData.get("pages"))
         );
-        router.push(`/BooksDetail/${bookData.id}`);
+        router.push(`/BookDetail/${bookData.id}`);
         alert("Book updated successfully");
       } catch (error) {
         alert(error || "Something went wrong");
@@ -48,7 +48,7 @@ export default function BookForm({ bookData }) {
 
   const handleCancel = () => {
     if (bookData) {
-      router.push(`/BooksDetail/${bookData.id}`);
+      router.push(`/BookDetail/${bookData.id}`);
     } else {
       router.push(`/`);
     }
@@ -166,7 +166,7 @@ export default function BookForm({ bookData }) {
             />
           )}
           <div className="flex justify-center">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mr-5 rounded" type="submit">{bookData ? "Edit Book" : "Create Book"}</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mr-5 rounded" type="submit">{bookData ? "Edit" : "Create"}</button>
             <button className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded" onClick={handleCancel}>Cancel</button>
           </div>
         </form>
