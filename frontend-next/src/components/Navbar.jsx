@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { loginUser } from "../modules/fetch";
 
-const Navbar = () => {
+const Navbar = ({ navigateTo }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
@@ -52,9 +52,12 @@ const Navbar = () => {
       </Link>
       <div className="flex space-x-4">
         {isLogin && (
-          <Link href="/NewBooks" className="bg-gray-800 text-white py-2 px-4 rounded">
+          <button
+            onClick={() => navigateTo("/NewBooks")}
+            className="bg-gray-800 text-white py-2 px-4 rounded"
+          >
             Create New Book
-          </Link>
+          </button>
         )}
         {!isLogin ? (
           <button onClick={handleOpen} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Login</button>

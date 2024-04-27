@@ -30,7 +30,7 @@ export default function BookForm({ bookData }) {
       try {
         await createBook(formData);
         event.target.reset();
-        router.push(`/homepage`);
+        router.push(`/`);
         alert("Book created successfully");
         setSelectedImage("");
       } catch (error) {

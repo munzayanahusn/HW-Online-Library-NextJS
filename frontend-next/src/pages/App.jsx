@@ -1,11 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
-import BookDetails from "./BooksDetail";
-import EditBookPage from "./EditBook";
 import Homepage from "./Homepage";
 import NewBookPage from "./NewBooks";
 import Register from "./Register";
+import BookDetails from "./BooksDetail";
+import EditBookPage from "./EditBook";
 import styles from "./styles/App.css"; 
 
 export default function App() {
@@ -17,10 +17,10 @@ export default function App() {
 
   return (
     <div className={styles.container}>
-      <Navbar />
+      <Navbar navigateTo={navigateTo} />
       {router.pathname === "/" && <Homepage />}
       {router.pathname === "/register" && <Register />}
-      {router.pathname === "/newbooks" && <NewBookPage />}
+      {router.pathname === "/NewBooks" && <NewBookPage />}
       {router.pathname.startsWith("/books/") && <BookDetails />}
       {router.pathname.startsWith("/editbooks/") && <EditBookPage />}
     </div>
